@@ -1,0 +1,32 @@
+Solution 1:
+
+vector<int> result;
+for(int i=0;i<A.size();i++)
+{
+    int j;
+    for (j = i+1; j < A.size(); j++)
+    {
+        if (A[i] <=A[j])
+            break;
+    }   
+    if (j == A.size()) // the loop didn't break
+        result.push_back(A[i]);
+}
+return result;
+
+Solution 2:
+
+vector<int> result;
+int max_from_right =  arr[arr.size()-1];
+
+/* Rightmost element is always leader */
+result.push_back(max_from_right);
+for (int i = arr.size()-2; i >= 0; i--)
+{
+    if (max_from_right < arr[i])
+    {          
+        max_from_right = arr[i];
+        result.push_back(max_from_right);
+    }
+}   
+return result;
